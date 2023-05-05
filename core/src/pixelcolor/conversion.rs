@@ -43,7 +43,8 @@ macro_rules! impl_rgb_conversion {
         })*
 
         impl $from_type {
-            pub(crate) const fn with_rgb888(r: u8, g: u8, b: u8) -> Self {
+            /// Constant conversion from full range RGB888.
+            pub const fn with_rgb888(r: u8, g: u8, b: u8) -> Self {
                 Self::new(
                     convert_channel::<{Rgb888::MAX_R}, {$from_type::MAX_R}>(r),
                     convert_channel::<{Rgb888::MAX_G}, {$from_type::MAX_G}>(g),
